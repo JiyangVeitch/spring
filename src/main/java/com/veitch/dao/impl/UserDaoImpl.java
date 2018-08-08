@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User login(User user) {
 
-        String sql = "select * from user where name= ? and password=?";
+        String sql = "SELECT * FROM user WHERE name= ? AND password=?";
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, user.getName(), user.getPassword());
 
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int insertUser(User user) {
 
-        String sql = " insert into user(name,password) values (?,?)";
+        String sql = " INSERT INTO user(name,password) VALUES (?,?)";
 
         int rs = jdbcTemplate.update(sql, user.getName(), user.getPassword());
 
@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> selectAll() {
         List<User> list = new ArrayList<>();
 
-        String sql = "select * from user";
+        String sql = "SELECT * FROM user";
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
 
@@ -69,7 +69,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int deleteById(String id) {
-        String sql = "delete from user where id=?";
+        String sql = "DELETE FROM user WHERE id=?";
 
         int rs = jdbcTemplate.update(sql, id);
 
@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User selectById(String id) {
 
-        String sql = "select * from user where id=?";
+        String sql = "SELECT * FROM user WHERE id=?";
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
 
@@ -100,7 +100,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int updateUser(User user) {
-        String sql = "update user set name=?,password=? where id =?";
+        String sql = "UPDATE user SET name=?,password=? WHERE id =?";
 
         int rs = jdbcTemplate.update(sql, user.getName(), user.getPassword(), user.getId());
 
